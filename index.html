@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Indian Hospitals &amp; Healthcare Delivery · Sector Initiation | AN·Equity Research</title>
+<meta name="description" content="Institutional sector initiation on Indian private hospitals. Market structure, bed-level economics, the maturation tax on new capacity, payer architecture, consolidation, company scorecards and scenarios to FY30. Data as at 3 August 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0A0D12;
+    --bg-2:      #0E1219;
+    --panel:     #111722;
+    --panel-2:   #161D2B;
+    --line:      #1E2634;
+    --line-hi:   #2A3446;
+    --text:      #E9ECF1;
+    --text-2:    #8B94A5;
+    --text-3:    #566074;
+    --amber:     #F0B429;
+    --amber-dim: #8A6A1C;
+    --amber-soft: rgba(240,180,41,.06);
+    --green:     #2EBD85;
+    --red:       #E5484D;
+    --blue:      #4A8FE7;
+
+    --serif: "Fraunces", Georgia, serif;
+    --mono:  "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+    --fs-prose: clamp(16.5px, 1.05vw, 18.5px);
+    --fs-table: clamp(15px, .95vw, 17px);
+    --fs-note:  clamp(13px, .82vw, 14.5px);
+    --fs-label: clamp(11.5px, .75vw, 12.8px);
+  }
+
+  [data-theme="light"] {
+    --bg:        #EFEDE6;
+    --bg-2:      #E7E4DB;
+    --panel:     #F7F5EF;
+    --panel-2:   #EDEAE1;
+    --line:      #D6D2C6;
+    --line-hi:   #C2BDAE;
+    --text:      #1B1E24;
+    --text-2:    #565E6E;
+    --text-3:    #8A9099;
+    --amber:     #A97B0E;
+    --amber-dim: #C9A85C;
+    --amber-soft: rgba(169,123,14,.07);
+    --green:     #1E8F63;
+    --red:       #C0353A;
+    --blue:      #2C6BC0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+    scroll-padding-top: 68px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: var(--fs-prose);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+    transition: background-color .3s ease, color .3s ease;
+  }
+
+  /* vignette only, no scanline */
+  body::after {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 5;
+    background: radial-gradient(ellipse at 50% 38%, transparent 58%, rgba(0,0,0,.26) 100%);
+  }
+  [data-theme="light"] body::after { display: none; }
+
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--amber); color: var(--bg); }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  .num { font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+  sup.e { color: var(--amber); font-size: .7em; font-weight: 600; }
+
+  /* ── STATUS BAR ──────────────────────────────── */
+  .status {
+    position: -webkit-sticky; position: sticky; top: 0; z-index: 60;
+    background: var(--bg-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .status__in { display: flex; align-items: center; gap: 18px; height: 48px; }
+  .status__mark {
+    font-family: var(--serif); font-size: 16px; font-weight: 500;
+    white-space: nowrap; flex: 0 0 auto;
+  }
+  .status__mark span { color: var(--amber); }
+  .status__nav {
+    display: flex; gap: 1px; flex: 1 1 auto; min-width: 0;
+    overflow-x: auto; overflow-y: hidden;
+    scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;
+  }
+  .status__nav::-webkit-scrollbar { display: none; }
+  .status__nav a {
+    font-size: 11px; letter-spacing: .1em; color: var(--text-3);
+    padding: 5px 8px; border: 1px solid transparent; border-radius: 2px;
+    white-space: nowrap; flex: 0 0 auto; transition: color .2s, border-color .2s;
+  }
+  .status__nav a:hover { color: var(--amber); border-color: var(--line-hi); }
+  .btn {
+    flex: 0 0 auto; border: 1px solid var(--line-hi); background: var(--panel);
+    color: var(--text-2); font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: .1em; padding: 6px 10px; border-radius: 2px; cursor: pointer;
+    transition: color .2s, border-color .2s;
+  }
+  .btn:hover { color: var(--amber); border-color: var(--amber-dim); }
+  .progress { position: absolute; left: 0; bottom: -1px; height: 1px; background: var(--amber); width: 0; }
+  @media (max-width: 640px) { .status__mark { display: none; } }
+
+  /* ── MASTHEAD ────────────────────────────────── */
+  .mast { padding: 74px 0 0; }
+  .mast-tag {
+    display: inline-block; font-size: var(--fs-label); letter-spacing: .2em;
+    color: var(--amber); border: 1px solid var(--amber-dim); background: var(--amber-soft);
+    padding: 5px 12px; border-radius: 2px; margin-bottom: 28px;
+  }
+  .mast h1 {
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(36px, 5.4vw, 68px); line-height: 1.02; letter-spacing: -.028em;
+    max-width: 20ch; margin-bottom: 8px;
+  }
+  .mast h1 em { font-style: italic; color: var(--amber); }
+  .mast-sub {
+    font-family: var(--serif); font-size: clamp(19px, 2vw, 25px); font-weight: 300;
+    font-style: italic; color: var(--text-2); margin-bottom: 26px; max-width: 34ch;
+  }
+  .mast-lede { font-size: var(--fs-prose); color: var(--text-2); max-width: 66ch; line-height: 1.7; }
+  .mast-lede b { color: var(--text); font-weight: 600; }
+  .mast-by {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,168px), 1fr));
+    gap: 1px; margin: 38px 0 0; background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .mast-by > div {
+    background: var(--bg); padding: 14px 16px; min-width: 0;
+    font-size: var(--fs-label); letter-spacing: .1em; color: var(--text-3);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .mast-by b { color: var(--text); font-weight: 500; letter-spacing: .02em; font-size: var(--fs-note); }
+
+  /* ── BAND ────────────────────────────────────── */
+  .band {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,190px), 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+    margin: 34px 0 0;
+  }
+  .band .b { background: var(--bg); padding: 20px 18px; min-width: 0; }
+  .band .v {
+    font-family: var(--serif); font-size: clamp(26px, 3vw, 34px); font-weight: 400;
+    letter-spacing: -.025em; line-height: 1; color: var(--text);
+  }
+  .band .v em { font-style: normal; font-size: .5em; color: var(--text-3); letter-spacing: 0; }
+  .band .k { font-size: var(--fs-label); color: var(--text-3); margin-top: 10px; line-height: 1.5; }
+
+  /* ── TOC ─────────────────────────────────────── */
+  .toc { margin: 40px 0 0; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+  .toc-h {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 13px 18px; background: var(--panel-2); border-bottom: 1px solid var(--line);
+    font-size: var(--fs-label); letter-spacing: .16em; color: var(--text-3);
+  }
+  .toc-h b { color: var(--amber); font-weight: 500; }
+  .toc-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,258px), 1fr));
+    background: var(--line); gap: 1px;
+  }
+  .toc-i {
+    background: var(--panel); padding: 13px 16px; min-width: 0;
+    display: flex; align-items: baseline; gap: 12px;
+    font-size: var(--fs-note); color: var(--text-2); transition: background .2s, color .2s;
+  }
+  .toc-i:hover { background: var(--panel-2); color: var(--text); }
+  .toc-i .mn {
+    font-size: var(--fs-label); letter-spacing: .14em; color: var(--amber);
+    flex: 0 0 auto; min-width: 34px;
+  }
+
+  /* ── SECTIONS ────────────────────────────────── */
+  main { display: block; }
+  .sec { padding: 66px 0; border-top: 1px solid var(--line); margin-top: 56px; }
+  .sec:first-child { margin-top: 66px; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--line);
+  }
+  .sec-mn {
+    font-size: var(--fs-label); letter-spacing: .2em; color: var(--amber);
+    border: 1px solid var(--amber-dim); background: var(--amber-soft);
+    padding: 4px 9px; border-radius: 2px; flex: 0 0 auto;
+  }
+  .sec-title {
+    font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 3.1vw, 34px);
+    letter-spacing: -.025em; line-height: 1.15; min-width: 0; flex: 1 1 auto;
+  }
+  .sec-meta { font-size: var(--fs-label); letter-spacing: .12em; color: var(--text-3); flex: 0 0 auto; }
+
+  .prose { max-width: 74ch; }
+  .prose p { margin-bottom: 20px; color: var(--text-2); line-height: 1.72; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--text); font-weight: 600; }
+  .prose em { color: var(--amber); font-style: normal; }
+  .prose .big { font-size: 1.06em; color: var(--text); line-height: 1.65; }
+
+  h3.sub {
+    font-family: var(--serif); font-weight: 500; font-size: clamp(19px, 1.6vw, 23px);
+    letter-spacing: -.015em; margin: 40px 0 16px; color: var(--text); line-height: 1.28;
+  }
+
+  ul.bul { list-style: none; margin: 0 0 22px; max-width: 74ch; }
+  ul.bul li {
+    position: relative; padding-left: 24px; margin-bottom: 13px;
+    color: var(--text-2); line-height: 1.7;
+  }
+  ul.bul li::before {
+    content: '▸'; position: absolute; left: 0; top: 1px; color: var(--amber); font-size: .8em;
+  }
+  ul.bul li b { color: var(--text); font-weight: 600; }
+  ul.bul li em { color: var(--amber); font-style: normal; }
+
+  .call {
+    border-left: 2px solid var(--amber); background: var(--amber-soft);
+    padding: 20px 24px; margin: 30px 0; max-width: 74ch;
+  }
+  .call .k { font-size: var(--fs-label); letter-spacing: .18em; color: var(--amber); margin-bottom: 10px; }
+  .call p { color: var(--text); margin: 0; line-height: 1.68; }
+
+  /* ── EXHIBITS ────────────────────────────────── */
+  .ex { border: 1px solid var(--line); background: var(--panel); margin: 34px 0; border-radius: 3px; overflow: hidden; }
+  .ex-h {
+    padding: 14px 20px; background: var(--panel-2); border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .ex-n { font-size: var(--fs-label); letter-spacing: .15em; color: var(--amber); flex: 0 0 auto; }
+  .ex-t { font-size: var(--fs-note); color: var(--text); line-height: 1.45; min-width: 0; }
+  .ex-b { padding: 22px 20px; }
+  .ex-f {
+    padding: 13px 20px; border-top: 1px solid var(--line);
+    font-size: var(--fs-label); color: var(--text-3); line-height: 1.62;
+  }
+
+  .swipe { display: none; font-size: var(--fs-label); color: var(--text-3); padding: 0 20px 10px; }
+  .tscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: var(--fs-table); }
+  th {
+    text-align: left; font-weight: 500; font-size: var(--fs-label); letter-spacing: .11em;
+    color: var(--text-3); padding: 0 11px 11px; border-bottom: 1px solid var(--line-hi);
+    white-space: nowrap;
+  }
+  th.r, td.r { text-align: right; }
+  td { padding: 11px; border-bottom: 1px solid var(--line); color: var(--text-2); vertical-align: top; line-height: 1.55; }
+  tr:last-child td { border-bottom: 0; }
+  td.nm { color: var(--text); font-weight: 500; white-space: nowrap; }
+  .pos { color: var(--green); }
+  .neg { color: var(--red); }
+  td.r.num { white-space: nowrap; }
+
+  /* ── BARS ────────────────────────────────────── */
+  .bars { display: flex; flex-direction: column; gap: 13px; }
+  .bar { display: grid; grid-template-columns: minmax(0,150px) minmax(0,1fr) 92px; gap: 14px; align-items: center; }
+  .bar .lb { font-size: var(--fs-note); color: var(--text-2); text-align: right; line-height: 1.3; }
+  .bar .tr { height: 22px; background: var(--panel-2); border-radius: 2px; overflow: hidden; }
+  .bar .fl {
+    height: 100%; width: 0; border-radius: 2px;
+    background: linear-gradient(90deg, var(--amber-dim), var(--amber));
+    transition: width 1s cubic-bezier(.16,1,.3,1);
+  }
+  .bar .fl.b { background: linear-gradient(90deg, #2B5A94, var(--blue)); }
+  .bar .fl.g { background: linear-gradient(90deg, #1B7A57, var(--green)); }
+  .bar .fl.r { background: linear-gradient(90deg, #8A2B2E, var(--red)); }
+  .bar .vl { font-size: var(--fs-note); color: var(--text); text-align: right; white-space: nowrap; }
+
+  /* ── SCORECARDS ──────────────────────────────── */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,300px), 1fr)); gap: 16px; margin: 32px 0; }
+  .card { border: 1px solid var(--line); background: var(--panel); border-radius: 3px; padding: 20px; min-width: 0; transition: border-color .25s; }
+  .card:hover { border-color: var(--line-hi); }
+  .card-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .card-n { font-family: var(--serif); font-size: clamp(18px,1.5vw,21px); font-weight: 500; letter-spacing: -.015em; color: var(--text); line-height: 1.2; }
+  .card-tk { font-size: var(--fs-label); letter-spacing: .08em; color: var(--text-3); white-space: nowrap; }
+  .st { display: inline-block; font-size: var(--fs-label); letter-spacing: .13em; padding: 3px 9px; border-radius: 2px; margin: 10px 0 14px; }
+  .st-h { color: var(--green); border: 1px solid rgba(46,189,133,.35); background: rgba(46,189,133,.07); }
+  .st-b { color: var(--amber); border: 1px solid var(--amber-dim); background: var(--amber-soft); }
+  .st-d { color: var(--blue); border: 1px solid rgba(74,143,231,.35); background: rgba(74,143,231,.07); }
+  .m { display: flex; justify-content: space-between; gap: 12px; font-size: var(--fs-note); padding: 7px 0; border-bottom: 1px solid var(--line); }
+  .m:last-of-type { border-bottom: 0; }
+  .m span:first-child { color: var(--text-3); }
+  .m span:last-child { color: var(--text); text-align: right; white-space: nowrap; }
+  .card-x { font-size: var(--fs-note); color: var(--text-2); line-height: 1.66; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .card-x em { color: var(--amber); font-style: normal; }
+
+  /* ── SCENARIOS ───────────────────────────────── */
+  .scn { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,272px), 1fr)); gap: 16px; margin: 32px 0; }
+  .scn-c { border: 1px solid var(--line); background: var(--panel); border-radius: 3px; overflow: hidden; min-width: 0; }
+  .scn-h { padding: 15px 18px; background: var(--panel-2); border-bottom: 1px solid var(--line); }
+  .scn-t { font-family: var(--serif); font-size: clamp(18px,1.5vw,21px); font-weight: 500; color: var(--text); }
+  .scn-p { font-size: var(--fs-label); letter-spacing: .13em; margin-top: 6px; }
+  .scn-b { padding: 18px; }
+  .scn-b p { font-size: var(--fs-note); margin: 15px 0 0; padding-top: 15px; border-top: 1px solid var(--line); line-height: 1.66; color: var(--text-2); }
+
+  /* ── FOOT ────────────────────────────────────── */
+  footer { padding: 52px 0 68px; border-top: 1px solid var(--line); margin-top: 56px; }
+  .foot-g { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,250px), 1fr)); gap: 28px; margin-bottom: 36px; }
+  .foot-k { font-size: var(--fs-label); letter-spacing: .15em; color: var(--amber); margin-bottom: 11px; }
+  .foot-t { font-size: var(--fs-note); color: var(--text-2); line-height: 1.72; }
+  .foot-bar {
+    padding-top: 24px; border-top: 1px solid var(--line); font-size: var(--fs-label);
+    color: var(--text-3); line-height: 1.7; display: flex; justify-content: space-between;
+    gap: 18px; flex-wrap: wrap;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 1040px) {
+    .wrap { padding: 0 28px; }
+    .sec { padding: 54px 0; margin-top: 44px; }
+    .bar { grid-template-columns: minmax(0,124px) minmax(0,1fr) 84px; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 18px; }
+    .mast { padding-top: 52px; }
+    .sec { padding: 44px 0; margin-top: 36px; }
+    .swipe { display: block; }
+    .bar { grid-template-columns: minmax(0,96px) minmax(0,1fr) 74px; gap: 9px; }
+    .ex-b { padding: 18px 15px; }
+    .ex-h, .ex-f { padding-left: 15px; padding-right: 15px; }
+  }
+  @media (max-width: 400px) {
+    .bar { grid-template-columns: minmax(0,80px) minmax(0,1fr) 66px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; animation: none !important; }
+  }
+
+  /* ── PRINT ───────────────────────────────────── */
+  @media print {
+    body::after, .status, .btn, .swipe { display: none !important; }
+    body { background: #fff; color: #111; font-size: 10pt; }
+    .sec { page-break-inside: avoid; border-top: 1px solid #ccc; margin-top: 0; padding: 20px 0; }
+    .ex, .card, .scn-c, .toc { break-inside: avoid; border: 1px solid #bbb; background: #fff; }
+    .ex-h, .scn-h, .toc-h { background: #f4f4f4; }
+    .tscroll { overflow: visible; }
+    table { min-width: 0; font-size: 8.5pt; }
+    .mast h1 { font-size: 26pt; }
+    .prose p, td, .foot-t, .card-x { color: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="status">
+  <div class="wrap status__in">
+    <div class="status__mark">AN<span>·</span>Equity Research</div>
+    <div class="status__nav">
+      <a href="#sum">SUM</a><a href="#mkt">MKT</a><a href="#unt">UNT</a><a href="#cap">CAP</a><a href="#cmp">CMP</a><a href="#pay">PAY</a><a href="#con">CON</a><a href="#scr">SCR</a><a href="#scn">SCN</a><a href="#kpi">KPI</a><a href="#rsk">RSK</a><a href="#apx">APX</a>
+    </div>
+    <button class="btn" id="themeBtn">LIGHT</button>
+    <button class="btn" id="printBtn">PRINT</button>
+  </div>
+  <div class="progress" id="prog"></div>
+</div>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="mast-tag">SECTOR INITIATION · INDIA HEALTHCARE DELIVERY</div>
+    <h1>The <em>Maturation</em> Tax</h1>
+    <div class="mast-sub">Why India's hospitals all grew in FY26, and only half of them earned</div>
+    <div class="mast-lede">
+      Every listed Indian hospital chain posted double digit revenue growth in FY26. Margins moved in opposite directions. The split had one cause: an unprecedented, simultaneous bed build out that charges full fixed cost from commissioning and delivers occupancy two to three years later. <b>We initiate with a constructive structural view and a differentiated stance on where in the capacity cycle the returns actually sit.</b>
+    </div>
+
+    <div class="mast-by">
+      <div>Analyst<b>Aditya Nair</b></div>
+      <div>Coverage<b>India · Healthcare Delivery</b></div>
+      <div>Report date<b>3 August 2026</b></div>
+      <div>Data cut-off<b>FY26 audited · Q1 FY27 part</b></div>
+      <div>Format<b>Sector initiation</b></div>
+    </div>
+
+    <div class="band">
+      <div class="b"><div class="v">₹68,700<em>cr</em></div><div class="k">FY26 revenue, nine listed chains<sup class="e">e</sup></div></div>
+      <div class="b"><div class="v">~15,000</div><div class="k">Beds guided FY27 to FY30, ex M&amp;A</div></div>
+      <div class="b"><div class="v">68<em>%</em></div><div class="k">Sector occupancy, broadly flat YoY</div></div>
+      <div class="b"><div class="v">890<em>bps</em></div><div class="k">Q4 FY26 margin spread, widest in five years</div></div>
+      <div class="b"><div class="v">₹48,952<em>cr</em></div><div class="k">Retail health premium, +19% YoY</div></div>
+    </div>
+
+    <nav class="toc">
+      <div class="toc-h"><span>Contents</span><b>12 sections</b></div>
+      <div class="toc-grid">
+        <a class="toc-i" href="#sum"><span class="mn">SUM</span>Investment summary</a>
+        <a class="toc-i" href="#mkt"><span class="mn">MKT</span>Market structure &amp; payer mix</a>
+        <a class="toc-i" href="#unt"><span class="mn">UNT</span>Bed economics</a>
+        <a class="toc-i" href="#cap"><span class="mn">CAP</span>The capacity supercycle</a>
+        <a class="toc-i" href="#cmp"><span class="mn">CMP</span>Competitive landscape</a>
+        <a class="toc-i" href="#pay"><span class="mn">PAY</span>Payer power &amp; regulation</a>
+        <a class="toc-i" href="#con"><span class="mn">CON</span>Consolidation</a>
+        <a class="toc-i" href="#scr"><span class="mn">SCR</span>Company scorecards</a>
+        <a class="toc-i" href="#scn"><span class="mn">SCN</span>Scenarios to FY30</a>
+        <a class="toc-i" href="#kpi"><span class="mn">KPI</span>What we monitor</a>
+        <a class="toc-i" href="#rsk"><span class="mn">RSK</span>Risks to the view</a>
+        <a class="toc-i" href="#apx"><span class="mn">APX</span>Appendix &amp; sources</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ══ SUM ══════════════════════════════════════ -->
+<section class="sec" id="sum">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">SUM</span>
+      <h2 class="sec-title">Investment summary</h2>
+      <span class="sec-meta">Five point thesis</span>
+    </div>
+
+    <div class="prose">
+      <p class="big">In FY26 the Indian hospital sector stopped being one trade. Every operator grew. Only some earned. The dividing line was not brand, geography or case mix. It was whether a company was harvesting mature beds or paying for new ones.</p>
+
+      <p>Operators harvesting mature assets expanded margin. Fortis lifted consolidated operating EBITDA margin to <em>22.8%</em> from 20.4% and grew PAT 31.5%. Max held 26.8% at the network level. Operators absorbing ramp costs went the other way. KIMS saw Q4 margin fall to <em>19.9%</em> from 25.3%, with FY26 PAT down to ₹242cr from ₹415cr. Medanta's reported margin fell 150bps purely on one hospital commissioning. Narayana's Q1 FY27 revenue rose 78% while PAT rose 5%.</p>
+
+      <p>That dispersion is not a quality signal. It is an accounting artefact of timing. A new tertiary bed carries consultant retainers, nursing, depreciation and interest from day one, against occupancy that starts near zero and reaches steady state in 24 to 36 months. Section UNT quantifies this <strong>maturation tax</strong> from company disclosure, and it is large enough to explain most of the spread.</p>
+
+      <p>The forward question follows directly. Roughly 15,000 self built beds are coming over FY27 to FY30, increasingly greenfield, increasingly debt funded, and concentrated in the same eight or nine metros. Whether that capital earns depends on two things the sector does not control: how fast beds fill, and what the payer agrees to pay for them.</p>
+    </div>
+
+    <div class="call">
+      <div class="k">CORE VIEW</div>
+      <p>Constructive on the sector, selective on entry point. Prefer operators whose ramp cost is already inside the reported base over those front loading greenfield capex into an untested tariff environment. The binding constraint on FY28 to FY30 returns is not demand or capital, it is <strong>pricing authority against a consolidating payer</strong>, and that authority accrues to clinical acuity and negotiating scale rather than bed count.</p>
+    </div>
+
+    <h3 class="sub">Five point thesis</h3>
+    <ul class="bul">
+      <li><b>The maturation tax is measurable, disclosed, and largely ignored.</b> KIMS quantified ₹128cr of FY26 EBITDA erosion from units under one year old against a 29.5% mature unit margin. Medanta's Noida drag was roughly ₹78cr, worth 150bps. Apollo has guided to about 100bps and ₹100cr to ₹150cr for FY27. Normalise for it and the sector's FY26 margin trend is flat to up, not down.</li>
+      <li><b>The funding pool is compounding faster than hospital revenue.</b> Retail health premium rose 19% to ₹48,952cr by February 2026 following the removal of GST on individual policies in September 2025. Group health grew 13% to ₹63,794cr, government schemes 16% to ₹10,293cr. Out of pocket share of health spend has fallen from roughly 64% a decade ago to somewhere between 39% and 44%.</li>
+      <li><b>Mix is a quiet headwind to realisation.</b> The fastest growing channel (government schemes) pays least, and the highest realisation channel (self pay) is shrinking as a share. The average rupee entering a private hospital over FY27 to FY30 becomes more insured and less discretionary. Capacity expansion does not solve this.</li>
+      <li><b>Payer power is the live risk, not statutory price control.</b> The Clinical Establishments Act rate fixing provision remains under Supreme Court challenge, and CGHS imposition is a tail risk that has been threatened since 2024 without execution. The recurring risk is bilateral: the 2025 AHPI standoff with Bajaj Allianz and Care Health showed insurers will contest 7% to 8% medical inflation pass through, and they consolidate faster than providers do.</li>
+      <li><b>Consolidation is now setting the mid cap clearing price.</b> Four transactions closed or progressed in the last twelve months, headlined by the Aster and Quality Care merger completing in June 2026. Scale is increasingly being bought rather than built, which changes the return calculus for everyone still building. Section CON works the arithmetic.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ MKT ══════════════════════════════════════ -->
+<section class="sec" id="mkt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">MKT</span>
+      <h2 class="sec-title">Market structure and payer mix</h2>
+      <span class="sec-meta">Demand architecture</span>
+    </div>
+
+    <div class="prose">
+      <p>India runs roughly 15 to 16 hospital beds per 10,000 people against a global median near 29. That gap has been quoted for two decades without translating into private returns, because the binding constraint was never supply. It was ability to pay. What changed over the last five years is the payment mechanism, not the disease burden.</p>
+
+      <p>Three funding channels now sit underneath private tertiary demand and they are not equivalent. Which channel fills an incremental bed is the single best predictor of what that bed realises.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 1</span><span class="ex-t">Payer channels: size, growth and realisation quality</span></div>
+      <div class="swipe">Swipe table horizontally →</div>
+      <div class="ex-b">
+        <div class="tscroll">
+        <table>
+          <thead><tr><th>Channel</th><th class="r">FY26 premium or outlay</th><th class="r">Growth</th><th>Realisation to provider</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Group health, corporate</td><td class="r num">₹63,794cr</td><td class="r num pos">+13%</td><td>Highest. Negotiated but volume backed, low deduction friction.</td></tr>
+            <tr><td class="nm">Retail health, individual</td><td class="r num">₹48,952cr</td><td class="r num pos">+19%</td><td>High. GST exemption from 22 September 2025 is expanding the insured base at the margin.</td></tr>
+            <tr><td class="nm">Government schemes</td><td class="r num">₹10,293cr</td><td class="r num pos">+16%</td><td>Lowest. Package rates sit below viability for most tertiary procedures. Used for occupancy fill, not margin.</td></tr>
+            <tr><td class="nm">Out of pocket, self pay</td><td class="r">39% to 44% of health spend</td><td class="r neg">declining</td><td>Highest per case, shrinking as a share. The mix headwind nobody underwrites.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ex-f">Industry gross written premium to February 2026, IRDAI sourced via press. PM-JAY FY27 allocation ₹9,500cr, roughly 570mn covered and about 33,000 hospitals empanelled. Out of pocket share per MoHFW commentary; estimates vary between 39% and 44% by methodology and vintage.</div>
+    </div>
+
+    <div class="prose">
+      <p>The insured pool is compounding faster than hospital revenue, which is why volume growth has been easy to come by. The composition is the problem, not the quantum.</p>
+    </div>
+
+    <h3 class="sub">Medical value travel</h3>
+    <div class="prose">
+      <p>The international patient book is the highest margin volume in the sector and is now material: Fortis at ₹639cr, up 18.5% and 7.8% of hospital revenue; Max at roughly 9% of hospital revenue; Medanta's FY26 international revenue up 33%. It is also the most fragile. Medanta flagged sequential softness from regional flight disruption, and Aster saw UAE and Oman volumes fall on Gulf macro. Treat it as a margin kicker with geopolitical beta, not a growth pillar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ UNT ══════════════════════════════════════ -->
+<section class="sec" id="unt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">UNT</span>
+      <h2 class="sec-title">Bed economics</h2>
+      <span class="sec-meta">The analytical spine</span>
+    </div>
+
+    <div class="prose">
+      <p class="big">Reported EBITDA margins across this sector are currently not comparable, for two separate reasons. One is definitional, one is cyclical. Both are correctable from disclosure, and correcting them changes the read materially.</p>
+    </div>
+
+    <h3 class="sub">1 · ARPOB is not a like for like metric</h3>
+    <div class="prose">
+      <p>Operators publish average revenue per occupied bed on different bases. Fortis states it annualised, at ₹2.51cr per annum, derived from hospital segment revenue. Max states it daily, at ₹77,900, on <em>gross</em> network revenue excluding Max Lab, over total occupied bed days. Medanta states it daily, at ₹66,687, on consolidated income including OPD pharmacy.</p>
+
+      <p>Apollo has pushed analysts toward average revenue per patient instead, at ₹1.72 lakh, on the argument that ARPOB is contaminated by falling length of stay from robotics and minimally invasive procedures. Shorter stays mechanically inflate ARPOB with no pricing gain at all. That objection is correct and underappreciated: a chain shifting toward day care will show ARPOB growth that is pure denominator effect.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 2</span><span class="ex-t">ARPOB normalised to a common daily basis, Q4 FY26</span></div>
+      <div class="ex-b">
+        <div class="bars">
+          <div class="bar"><div class="lb">Max Healthcare</div><div class="tr"><div class="fl" data-w="100"></div></div><div class="vl num">₹77,900</div></div>
+          <div class="bar"><div class="lb">Fortis</div><div class="tr"><div class="fl" data-w="90"></div></div><div class="vl num">₹70,137<sup class="e">e</sup></div></div>
+          <div class="bar"><div class="lb">Jupiter Life Line</div><div class="tr"><div class="fl b" data-w="87"></div></div><div class="vl num">₹67,700</div></div>
+          <div class="bar"><div class="lb">Medanta</div><div class="tr"><div class="fl b" data-w="86"></div></div><div class="vl num">₹66,687</div></div>
+        </div>
+      </div>
+      <div class="ex-f"><sup class="e">e</sup> Derived. Fortis daily figure converted from the disclosed ₹2.56cr per annum Q4 ARPOB. Bases still differ after conversion: Max is gross network revenue ex Max Lab, Fortis is hospital segment, Medanta is consolidated including OPD pharmacy, Jupiter is an FY26 average. Do not rank operators on this exhibit. Use it to size the definitional noise, which is roughly 15% of the apparent spread.</div>
+    </div>
+
+    <h3 class="sub">2 · The maturation tax</h3>
+    <div class="prose">
+      <p>A commissioned bed is a full cost bed from day one and a revenue bed only once it has patients, consultants and live insurance empanelment. Companies disclose that drag with reasonable candour. The market prices it as though it were structural margin decay.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 3</span><span class="ex-t">Disclosed EBITDA drag from sub scale units, FY26, and the normalisation bridge</span></div>
+      <div class="swipe">Swipe table horizontally →</div>
+      <div class="ex-b">
+        <div class="tscroll">
+        <table>
+          <thead><tr><th>Operator</th><th class="r">Disclosed drag</th><th class="r">Mature unit margin</th><th class="r">Reported margin</th><th class="r">Normalised<sup class="e">e</sup></th><th>Basis</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">KIMS</td><td class="r num neg">₹128cr FY26</td><td class="r num pos">~29.5%</td><td class="r num">19.9% Q4</td><td class="r num pos">~23.2%</td><td>₹32cr of drag in Q4 alone. New units contributed ₹224cr of revenue. Guides drag to more than halve in FY27.</td></tr>
+            <tr><td class="nm">Medanta</td><td class="r num neg">~₹78cr</td><td class="r num pos">25.7% ex Noida</td><td class="r num">24.2%</td><td class="r num pos">25.7%</td><td>Entirely the 382 bed Noida commissioning. 150bps of optical margin loss on one asset.</td></tr>
+            <tr><td class="nm">Apollo</td><td class="r num neg">₹100cr to ₹150cr guided</td><td class="r num pos">24% to 25%</td><td class="r num">~26% FY27E</td><td class="r">n/a</td><td>Guided roughly 100bps of drag against about 1,500 beds over FY26 to FY28.</td></tr>
+            <tr><td class="nm">Rainbow</td><td class="r">not separated</td><td class="r num pos">28.6%</td><td class="r num">28.6%</td><td class="r">n/a</td><td>Guides margin <em>down</em> to 24% to 25% by end FY27 as new units absorb. Unusually honest guidance.</td></tr>
+            <tr><td class="nm">Fortis, Max</td><td class="r">minimal</td><td class="r num pos">22.2%, 26.8%</td><td class="r num">22.8%, 26.8%</td><td class="r">n/a</td><td>Brownfield weighted expansion. Drag absorbed inside existing overhead.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ex-f"><sup class="e">e</sup> Derived. Normalised column adds the disclosed drag back to reported EBITDA over reported revenue, on the company's own reporting basis. It is an illustrative floor, not a restatement: it assumes the drag is fully attributable to sub scale units and ignores any allocated corporate overhead. Margin bases differ by operator (network, consolidated, hospital segment) and are not harmonised here.</div>
+    </div>
+
+    <div class="call">
+      <div class="k">THE BRIDGE</div>
+      <p>Add KIMS's ₹128cr back and the margin moves from 19.9% toward the low twenties, against a 29.5% mature unit level. Add Medanta's ₹78cr and 24.2% becomes 25.7%. <strong>On a maturity normalised basis the sector's FY26 margin profile was stable to improving.</strong> What deteriorated was the ratio of ramping beds to mature beds, which reverses mechanically as cohorts age, <em>provided occupancy actually arrives.</em></p>
+    </div>
+
+    <div class="prose">
+      <p>That conditional carries the whole thesis. KIMS attributed part of its Q4 shortfall specifically to delayed insurance empanelment at new units. Empanelment lag is the most underrated operational variable in the sector, nobody discloses it on a standardised basis, and it sits entirely in the payer's gift. Section RSK sets out where this normalisation framework breaks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CAP ══════════════════════════════════════ -->
+<section class="sec" id="cap">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">CAP</span>
+      <h2 class="sec-title">The capacity supercycle</h2>
+      <span class="sec-meta">FY27 to FY30</span>
+    </div>
+
+    <div class="prose">
+      <p>Every major operator is expanding at once. Individually each programme is defensible. Collectively they represent the largest simultaneous private bed addition in the sector's history, concentrated in the same handful of metros.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 4</span><span class="ex-t">Announced self build pipelines, FY27 to FY30, excluding M&amp;A</span></div>
+      <div class="ex-b">
+        <div class="bars">
+          <div class="bar"><div class="lb">Aster, organic</div><div class="tr"><div class="fl" data-w="100"></div></div><div class="vl num">2,728</div></div>
+          <div class="bar"><div class="lb">Medanta</div><div class="tr"><div class="fl" data-w="99"></div></div><div class="vl num">~2,700</div></div>
+          <div class="bar"><div class="lb">Yatharth</div><div class="tr"><div class="fl" data-w="90"></div></div><div class="vl num">~2,445</div></div>
+          <div class="bar"><div class="lb">Fortis</div><div class="tr"><div class="fl b" data-w="66"></div></div><div class="vl num">~1,800</div></div>
+          <div class="bar"><div class="lb">KIMS</div><div class="tr"><div class="fl b" data-w="66"></div></div><div class="vl num">~1,800</div></div>
+          <div class="bar"><div class="lb">Narayana</div><div class="tr"><div class="fl b" data-w="45"></div></div><div class="vl num">~1,230<sup class="e">e</sup></div></div>
+          <div class="bar"><div class="lb">Apollo, FY27</div><div class="tr"><div class="fl b" data-w="31"></div></div><div class="vl num">~835</div></div>
+          <div class="bar"><div class="lb">Jupiter</div><div class="tr"><div class="fl b" data-w="30"></div></div><div class="vl num">~800</div></div>
+        </div>
+      </div>
+      <div class="ex-f">Company guidance as at Q4 FY26 and Q1 FY27 disclosures. Apollo shows FY27 census beds only and understates a multi year programme of roughly 1,500 beds over 12 to 18 months, taking the network past 10,600. Max targets near doubling of capacity over four to five years including 712 bed Lucknow and 450 bed Pune greenfields, not separately quantified here. <sup class="e">e</sup> Narayana derived from a stated 7,600 plus bed target by FY30 against the current base.</div>
+    </div>
+
+    <div class="prose">
+      <p>Two structural points follow. First, <strong>the capex mix is shifting toward greenfield</strong>, which ramps considerably worse than the brownfield additions that drove FY22 to FY25 returns. Brownfield beds attach to existing consultants, existing empanelment and existing overhead. Greenfield beds attach to none of these. Medanta's Noida unit achieved NABH accreditation inside six months and still ran an EBITDA loss for the year.</p>
+
+      <p>Second, <strong>the balance sheet is now funding growth</strong> in a sector that spent a decade deleveraging. Fortis net debt rose to ₹2,334cr, taking net debt to EBITDA to 1.09x from 0.93x. Narayana's net debt to equity moved to 0.49x with US$117mn and £150mn of foreign currency borrowing after the UK acquisition, and it is seeking a ₹1,500cr enabling resolution. KIMS is running a ₹1,500cr QIP explicitly to retire roughly ₹1,000cr of debt. Global Health's Q4 interest cost rose 78% year on year. Jupiter's hit a record.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CMP ══════════════════════════════════════ -->
+<section class="sec" id="cmp">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">CMP</span>
+      <h2 class="sec-title">Competitive landscape</h2>
+      <span class="sec-meta">Nine listed operators</span>
+    </div>
+
+    <div class="prose">
+      <p>The listed set splits into three tiers that behave quite differently. Scale integrators (Apollo, Aster) carry non hospital businesses that dilute headline margin but diversify earnings. Premium metro operators (Max, Fortis, Medanta, Jupiter) run the highest realisation per bed and the tightest catchments. Volume and specialty operators (Narayana, KIMS, Rainbow, Yatharth) trade realisation for throughput or clinical focus.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 5</span><span class="ex-t">FY26 scoreboard: the growth versus earnings split</span></div>
+      <div class="swipe">Swipe table horizontally →</div>
+      <div class="ex-b">
+        <div class="tscroll">
+        <table>
+          <thead><tr><th>Operator</th><th class="r">FY26 revenue</th><th class="r">YoY</th><th class="r">EBITDA</th><th class="r">Margin</th><th class="r">PAT</th><th class="r">YoY</th><th class="r">Occupancy</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Apollo Hospitals</td><td class="r num">₹25,229cr</td><td class="r num pos">+16%</td><td class="r num">₹3,769cr</td><td class="r num">14.9%</td><td class="r num">₹1,942cr</td><td class="r num pos">+34%</td><td class="r num">68%</td></tr>
+            <tr><td class="nm">Max Healthcare</td><td class="r num">₹10,538cr<sup class="e">*</sup></td><td class="r num pos">+16%</td><td class="r num">₹2,638cr</td><td class="r num">26.8%</td><td class="r num">₹1,631cr</td><td class="r num pos">+22%</td><td class="r num">75%</td></tr>
+            <tr><td class="nm">Aster DM Quality Care</td><td class="r num">₹9,273cr<sup class="e">†</sup></td><td class="r num pos">+14%</td><td class="r num">₹2,013cr</td><td class="r num">21.7%</td><td class="r">n/m</td><td class="r">n/m</td><td class="r">n/d</td></tr>
+            <tr><td class="nm">Fortis Healthcare</td><td class="r num">₹9,128cr</td><td class="r num pos">+17.3%</td><td class="r num">₹2,085cr</td><td class="r num">22.8%</td><td class="r num">₹1,064cr</td><td class="r num pos">+31.5%</td><td class="r num">68%</td></tr>
+            <tr><td class="nm">Narayana Hrudayalaya</td><td class="r num">n/c<sup class="e">‡</sup></td><td class="r num pos">+75.8%</td><td class="r">n/c</td><td class="r">n/c</td><td class="r">n/c</td><td class="r num pos">+16.2%</td><td class="r">n/d</td></tr>
+            <tr><td class="nm">Medanta</td><td class="r num">₹4,509cr</td><td class="r num pos">+19.6%</td><td class="r num">₹1,056cr</td><td class="r num">24.2%</td><td class="r num">₹554cr</td><td class="r num pos">+15.1%</td><td class="r num">~62%</td></tr>
+            <tr><td class="nm">KIMS</td><td class="r num">₹3,931cr</td><td class="r num pos">+28.2%</td><td class="r">n/d</td><td class="r num neg">19.9% Q4</td><td class="r num">₹242cr</td><td class="r num neg">−42%</td><td class="r">n/d</td></tr>
+            <tr><td class="nm">Rainbow Children's</td><td class="r num">₹1,672cr<sup class="e">e</sup></td><td class="r num pos">+24%</td><td class="r">n/d</td><td class="r num pos">28.6% Q1</td><td class="r">n/d</td><td class="r">n/d</td><td class="r num">~41%</td></tr>
+            <tr><td class="nm">Jupiter Life Line</td><td class="r num">₹1,500cr</td><td class="r num pos">+15.2%</td><td class="r num">₹343cr</td><td class="r num">22.9%</td><td class="r num">₹194cr</td><td class="r num">flat</td><td class="r num">61.2%</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ex-f"><sup class="e">*</sup> Max reports on a network gross revenue basis; consolidated revenue from operations was ₹8,373cr. <sup class="e">†</sup> Aster is pro forma for the Quality Care merger; standalone India FY26 was ₹4,643cr with ₹947cr EBITDA. <sup class="e">‡</sup> Narayana FY26 is not comparable to FY25 following consolidation of Practice Plus Group from 6 November 2025; growth rates shown, absolutes withheld. <sup class="e">e</sup> Rainbow FY26 revenue derived from disclosed quarterly run rate. Apollo's consolidated margin is structurally lower than peers because pharmacy and distribution dilute a hospital segment running at 24% to 25%.</div>
+    </div>
+
+    <div class="prose">
+      <p>Read the table against Exhibit 3 and the pattern is clean. The three operators with the weakest earnings prints (KIMS, Narayana, Medanta) are the three carrying the heaviest ramp or acquisition load. The two with the strongest margins (Max, Fortis) added capacity brownfield. Nothing in the FY26 numbers suggests a demand problem anywhere in the sector.</p>
+
+      <p>Two structural observations on competition. Realisation per bed differs by roughly 17% across the premium tier once bases are normalised, which is narrower than the reported spread implies and suggests limited pricing differentiation between metro operators. And catchment overlap is rising: Bengaluru, Delhi NCR, Hyderabad and Mumbai now each have three or more listed operators commissioning capacity simultaneously, which is where occupancy dilution will show first.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PAY ══════════════════════════════════════ -->
+<section class="sec" id="pay">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">PAY</span>
+      <h2 class="sec-title">Payer power and regulation</h2>
+      <span class="sec-meta">Where the margin is contested</span>
+    </div>
+
+    <div class="prose">
+      <p>The consensus risk is government price control. We think that is the wrong risk to size. The Clinical Establishments Act 2010 does empower rate setting, but the provision faces multiple constitutional challenges in the Supreme Court, state high courts have struck down analogous rate fixing (the Bombay High Court on Maharashtra's COVID caps, the Calcutta High Court on the West Bengal commission's orders), and the Court's own threat to impose CGHS rates as an interim measure has recurred since 2024 without execution. CGHS rates sit materially below private tariffs. Imposition would be existential, which is precisely why it keeps not happening.</p>
+
+      <p>The risk that is live sits one level down, in bilateral tariff negotiation. In August 2025 the AHPI, representing some 15,200 hospitals, instructed members to suspend cashless services for Bajaj Allianz and Care Health policyholders over refusal to revise tariffs against 7% to 8% medical inflation. It was withdrawn within a week. The precedent matters more than the outcome.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 6</span><span class="ex-t">Payer and provider balance of power, direction of travel</span></div>
+      <div class="swipe">Swipe table horizontally →</div>
+      <div class="ex-b">
+        <div class="tscroll">
+        <table>
+          <thead><tr><th>Vector</th><th>Favours</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Insurer consolidation</td><td class="neg">Payer</td><td>Standalone health insurers are gaining share and negotiate as blocs, with the General Insurance Council coordinating industry response. Providers negotiate individually.</td></tr>
+            <tr><td class="nm">Medical inflation pass through</td><td class="neg">Payer</td><td>7% to 8% cost inflation against ARPOB growth of 2% to 8%. The gap is being absorbed by providers, not passed on.</td></tr>
+            <tr><td class="nm">IRDAI cashless mandates</td><td class="neg">Payer</td><td>One hour authorisation and three hour discharge norms shift working capital and process cost onto hospitals.</td></tr>
+            <tr><td class="nm">Empanelment as gatekeeper</td><td class="neg">Payer</td><td>New units cannot fill without insurer contracts. KIMS's Q4 miss was partly empanelment lag, which is leverage the payer knows it holds.</td></tr>
+            <tr><td class="nm">Metro capacity scarcity</td><td class="pos">Provider</td><td>Tertiary and quaternary capability is not substitutable. Insurers cannot exclude the leading hospital in a catchment.</td></tr>
+            <tr><td class="nm">Clinical complexity mix</td><td class="pos">Provider</td><td>Robotics, transplants and oncology sit outside standardised package rates. Case mix escalation is the durable pricing lever.</td></tr>
+            <tr><td class="nm">Network scale in negotiation</td><td class="pos">Provider</td><td>A 25 city network negotiates differently from a single region chain. The clearest strategic argument for the consolidation in Section CON.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ex-f">Assessment based on 2025 and 2026 industry disclosures, IRDAI norms, AHPI and General Insurance Council statements, and Supreme Court proceedings on the Clinical Establishments Act. Directional judgement, not a scored model.</div>
+    </div>
+
+    <div class="call">
+      <div class="k">STRATEGIC IMPLICATION</div>
+      <p>If tariff growth is capped at insurer tolerance, only two margin levers remain defensible: <strong>case mix escalation</strong> and <strong>negotiating scale</strong>. Apollo pursues the first when it directs analysts to revenue per patient over ARPOB. Max pursues it through oncology. Medanta's 32.4% developing hospital margin excluding Noida is what it looks like when it works. Both levers imply returns separate on capability and scale rather than bed count, which is a poor fit for the greenfield volume strategies currently being funded with debt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CON ══════════════════════════════════════ -->
+<section class="sec" id="con">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">CON</span>
+      <h2 class="sec-title">Consolidation</h2>
+      <span class="sec-meta">Buying maturity</span>
+    </div>
+
+    <div class="prose">
+      <p>Four transactions in twelve months have changed the sector's structure. The common logic is worth stating: acquired hospitals arrive with occupancy, consultants and live empanelment already in place, which means <strong>no maturation tax</strong>. That is the direct alternative to the build programmes in Section CAP, and the sector is now running both experiments in parallel.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 7</span><span class="ex-t">Transactions closed or progressed, FY26 to date</span></div>
+      <div class="swipe">Swipe table horizontally →</div>
+      <div class="ex-b">
+        <div class="tscroll">
+        <table>
+          <thead><tr><th>Acquirer</th><th>Target</th><th class="r">Consideration</th><th>Status</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Aster DM</td><td>Quality Care India (CARE, KIMSHEALTH, Evercare)</td><td class="r num">Share swap, 977:1000</td><td class="pos">NCLT approved 19 Jun 26</td><td>Scale. Creates a top three chain of roughly 10,600 beds across 28 cities.</td></tr>
+            <tr><td class="nm">Narayana</td><td>Practice Plus Group Hospitals, UK</td><td class="r num">£183mn cash</td><td class="pos">Closed 6 Nov 25</td><td>Geography. 12 NHS contracted surgical centres. International moves toward half of group profit.</td></tr>
+            <tr><td class="nm">Max Healthcare</td><td>Kalinga Hospital, Bhubaneswar</td><td class="r num">58.28% stake</td><td class="pos">Closed 18 May 26</td><td>Entry. First Eastern India platform.</td></tr>
+            <tr><td class="nm">Fortis</td><td>People Tree Hospital, Bengaluru</td><td class="r num">₹430cr</td><td class="pos">Announced</td><td>Density. Adds capacity in an existing catchment.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ex-f">Company announcements and exchange filings. Aster consideration was settled entirely in equity, preceded by a 5% initial stake purchase also settled in paper.</div>
+    </div>
+
+    <h3 class="sub">The Aster case, briefly</h3>
+    <div class="prose">
+      <p>The Aster and Quality Care merger is the largest of the four and the only one where the arithmetic can be tested from public disclosure, so it is worth one exhibit. Subtracting Aster's standalone FY26 from the published pro forma gives an implied Quality Care margin of <em>23.0%</em> against Aster's own 20.4%. Quality Care was ascribed 25.2x FY24 adjusted EV to EBITDA in the scheme documents against 36.6x for Aster. On those figures Aster acquired a higher margin business at a lower multiple, in paper.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 8</span><span class="ex-t">Aster merger bridge, FY26 basis</span></div>
+      <div class="swipe">Swipe table horizontally →</div>
+      <div class="ex-b">
+        <div class="tscroll">
+        <table>
+          <thead><tr><th>Line</th><th class="r">Aster standalone</th><th class="r">QCIL implied<sup class="e">e</sup></th><th class="r">Pro forma</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Revenue</td><td class="r num">₹4,643cr</td><td class="r num">₹4,630cr</td><td class="r num">₹9,273cr</td></tr>
+            <tr><td class="nm">Operating EBITDA</td><td class="r num">₹947cr</td><td class="r num">₹1,066cr</td><td class="r num">₹2,013cr</td></tr>
+            <tr><td class="nm">EBITDA margin</td><td class="r num">20.4%</td><td class="r num pos">23.0%</td><td class="r num">21.7%</td></tr>
+            <tr><td class="nm">Valuation multiple, FY24 adj.</td><td class="r num neg">36.6x</td><td class="r num pos">25.2x</td><td class="r">n/a</td></tr>
+            <tr><td class="nm">Shares outstanding</td><td class="r num">518.1mn</td><td class="r">n/a</td><td class="r num">871.7mn</td></tr>
+            <tr><td class="nm">EBITDA per share</td><td class="r num">₹18.28</td><td class="r">n/a</td><td class="r num pos">₹23.09</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ex-f"><sup class="e">e</sup> Derived. The QCIL column is a residual, obtained by subtracting Aster standalone FY26 from the company published pro forma. It is not a QCIL disclosure and will contain consolidation and elimination effects. Share count per the June 2026 allotment filing, 518,121,029 rising to 871,672,439. Multiples are the FY24 adjusted post Ind AS figures cited in the November 2024 scheme documents, not current trading multiples.</div>
+    </div>
+
+    <div class="prose">
+      <p>Share count rose 68.2% and pro forma EBITDA rose 112.6%, so EBITDA per share moves from ₹18.28 to ₹23.09, roughly 26% accretion before any synergy. Set against that: the two networks barely overlap geographically, so cost synergy should be assumed low; four brands are retained across 28 cities; and Blackstone holds 29.71%, a larger stake than the founding Moopen family's 24%, with three of twelve board seats. The deal was well priced. The company is not yet demonstrated. First post merger print is 5 August 2026.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SCR ══════════════════════════════════════ -->
+<section class="sec" id="scr">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">SCR</span>
+      <h2 class="sec-title">Company scorecards</h2>
+      <span class="sec-meta">Stance, not target price</span>
+    </div>
+
+    <div class="prose">
+      <p>The stance framework is <strong>Harvesting, Building, Digesting</strong>: a position on the capacity cycle rather than a valuation call. Ratings without a fitted model would be decoration. Section APX sets out the modelling approach for when the company models are built.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-h"><div class="card-n">Apollo Hospitals</div><div class="card-tk">APHS IN</div></div>
+        <div class="st st-d">DIGESTING</div>
+        <div class="m"><span>FY26 revenue</span><span class="num">₹25,229cr, +16%</span></div>
+        <div class="m"><span>Hospital margin</span><span class="num">24% to 25%</span></div>
+        <div class="m"><span>Occupancy, ARPP</span><span class="num">68%, ₹1.72L</span></div>
+        <div class="m"><span>Operating beds</span><span class="num">8,131 ex AHLL</span></div>
+        <div class="card-x">The restructuring is the story. HealthCo demerges into Apollo Healthtech, Keimed merges in, potential listing by Q4 FY27. A sum of the parts event that should surface value currently buried inside a 14.9% consolidated margin. HealthCo EBITDA already inflected to ₹94cr from ₹23cr. Reports Q1 FY27 on 12 August.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">Max Healthcare</div><div class="card-tk">MAXHEALTH IN</div></div>
+        <div class="st st-h">HARVESTING</div>
+        <div class="m"><span>FY26 gross revenue</span><span class="num">₹10,538cr, +16%</span></div>
+        <div class="m"><span>Network margin</span><span class="num">26.8%</span></div>
+        <div class="m"><span>Occupancy, ARPOB</span><span class="num">75%, ₹77,900</span></div>
+        <div class="m"><span>ROCE FY26</span><span class="num">21.8%, 23.1% ex CWIP</span></div>
+        <div class="card-x">Highest realisation and utilisation in the listed set, and the only operator generating meaningful free cash while expanding, at ₹581cr in Q4. Q4 clinician costs rose roughly 230bps on pre emptive hiring and ROCE fell from 25.9% as CWIP builds. Kalinga opens Eastern India. <em>The premiumisation model is proven. The question is whether it travels to Lucknow and Pune.</em></div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">Fortis Healthcare</div><div class="card-tk">FORTIS IN</div></div>
+        <div class="st st-h">HARVESTING</div>
+        <div class="m"><span>FY26 revenue</span><span class="num">₹9,128cr, +17.3%</span></div>
+        <div class="m"><span>Hospital margin</span><span class="num">22.2%, from 20.5%</span></div>
+        <div class="m"><span>Occupancy, ARPOB</span><span class="num">68%, ₹2.51cr p.a.</span></div>
+        <div class="m"><span>Net debt to EBITDA</span><span class="num">1.09x</span></div>
+        <div class="card-x">The cleanest margin story in the sector. Agilus diagnostics margin rebuilt to 23.6% from 17.7%, adding roughly ₹110cr of EBITDA on near flat volume. Guides 15% plus hospital revenue growth with 150bps of margin expansion in FY27, and 25% by FY28. Watch occupancy softness at FMRI and BG Road, tied to the international book.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">Aster DM Quality Care</div><div class="card-tk">ASTERDM IN</div></div>
+        <div class="st st-d">DIGESTING</div>
+        <div class="m"><span>FY26 pro forma revenue</span><span class="num">₹9,273cr, +14%</span></div>
+        <div class="m"><span>Pro forma EBITDA</span><span class="num">₹2,013cr, 21.7%</span></div>
+        <div class="m"><span>Network</span><span class="num">~10,620 beds, 28 cities</span></div>
+        <div class="m"><span>Blackstone stake</span><span class="num">29.71%</span></div>
+        <div class="card-x">Added scale without a maturation tax, at 26% EBITDA per share accretion. Standalone India was already inflecting, with Q4 margin up 134bps to 20.7%. <em>Risk is not the price paid, it is four brand integration across low overlap geographies and a sponsor holding larger than the founding family.</em> Kerala nurses' strike and Gulf volume softness will muddy the first two prints.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">Narayana Hrudayalaya</div><div class="card-tk">NARH IN</div></div>
+        <div class="st st-b">BUILDING</div>
+        <div class="m"><span>Q1 FY27 revenue</span><span class="num">₹2,684cr, +78%</span></div>
+        <div class="m"><span>Q1 FY27 PAT</span><span class="num">₹194cr, +5%</span></div>
+        <div class="m"><span>India, Cayman</span><span class="num">+17%, +38.9%</span></div>
+        <div class="m"><span>Net debt to equity</span><span class="num">0.49x</span></div>
+        <div class="card-x">Now an international company with an Indian anchor. Practice Plus Group plus Cayman take international toward roughly half of group profitability, which is currency, regulatory and reimbursement exposure the domestic multiple does not obviously price. The 78% against 5% gap is acquisition arithmetic rather than deterioration, but the FX denominated debt is real.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">Medanta, Global Health</div><div class="card-tk">MEDANTA IN</div></div>
+        <div class="st st-b">BUILDING</div>
+        <div class="m"><span>FY26 income</span><span class="num">₹4,509cr, +19.6%</span></div>
+        <div class="m"><span>Margin ex Noida</span><span class="num">25.7% vs 24.2% rep.</span></div>
+        <div class="m"><span>Occupancy, ARPOB</span><span class="num">~62%, ₹66,550</span></div>
+        <div class="m"><span>Beds added FY26</span><span class="num">623, to 3,665</span></div>
+        <div class="card-x">Best in class clinical franchise, worst timed disclosure optics. Developing hospitals excluding Noida grew revenue 29% with margin expanding 220bps to 32.4%, so the ramp model demonstrably works. Noida alone cost 150bps. ₹4,500cr of capex for roughly 2,700 beds means the drag recurs through FY29. Interest cost up 78%.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">KIMS Hospitals</div><div class="card-tk">KIMS IN</div></div>
+        <div class="st st-b">BUILDING</div>
+        <div class="m"><span>FY26 revenue</span><span class="num">₹3,931cr, +28.2%</span></div>
+        <div class="m"><span>FY26 PAT</span><span class="num">₹242cr, from ₹415cr</span></div>
+        <div class="m"><span>Mature unit margin</span><span class="num">~29.5%</span></div>
+        <div class="m"><span>New unit drag</span><span class="num">₹128cr FY26</span></div>
+        <div class="card-x">The purest expression of the maturation tax. Four units across Bengaluru, Kerala and Thane opened inside a year, with empanelment lag compounding the drag. Management guides erosion to more than halve in FY27. Fastest revenue growth in the set, weakest earnings. Resolvable, but the ₹1,500cr QIP means the equity is funding the wait.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">Rainbow Children's</div><div class="card-tk">RAINBOW IN</div></div>
+        <div class="st st-h">HARVESTING</div>
+        <div class="m"><span>Q1 FY27 revenue</span><span class="num">₹470cr, +33%</span></div>
+        <div class="m"><span>Q1 FY27 EBITDA</span><span class="num">₹134.6cr, 28.6%</span></div>
+        <div class="m"><span>Occupancy</span><span class="num">&gt;41%</span></div>
+        <div class="m"><span>Cash, investments</span><span class="num">₹613cr, ~nil LT debt</span></div>
+        <div class="card-x">Highest margin, lowest occupancy. The paediatric hub and spoke model runs structurally light on beds and heavy on OPD and fertility, so occupancy is not comparable to a general tertiary chain. Capacity up 26% to 2,435 beds, discharges up 28%. Guides margin <em>down</em> to 24% to 25% by end FY27. Net cash is the sector's rarest asset right now.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">Jupiter Life Line</div><div class="card-tk">JLHL IN</div></div>
+        <div class="st st-b">BUILDING</div>
+        <div class="m"><span>FY26 income</span><span class="num">₹1,499.8cr, +15.2%</span></div>
+        <div class="m"><span>FY26 EBITDA</span><span class="num">₹343.3cr, 22.9%</span></div>
+        <div class="m"><span>Occupancy, ARPOB</span><span class="num">61.2%, ₹67,700</span></div>
+        <div class="m"><span>FY26 PAT</span><span class="num">₹194.2cr, flat</span></div>
+        <div class="card-x">Western India focus with a clean regional franchise. Occupancy eased from 65.3% on new bed additions, and flat PAT against 15% revenue growth is the ramp signature in miniature. Dombivli commissioned, with Pune, BKC and Mira Bhayandar to follow toward roughly 2,900 beds. Interest cost at a record. A smaller scale version of the sector question.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><div class="card-n">Yatharth Hospital</div><div class="card-tk">YATHARTH IN</div></div>
+        <div class="st st-b">BUILDING</div>
+        <div class="m"><span>Q4 FY26 revenue</span><span class="num">₹341.6cr, +47%</span></div>
+        <div class="m"><span>Q4 FY26 EBITDA</span><span class="num">₹79.9cr, +37%</span></div>
+        <div class="m"><span>Q4 FY26 PAT</span><span class="num">₹47.5cr, +23%</span></div>
+        <div class="m"><span>Beds</span><span class="num">1,605 to 2,555+</span></div>
+        <div class="card-x">Fastest capacity growth in the listed set, from the smallest base, targeting roughly 5,000 beds within three years. NCR weighted and acquisition led. The descending growth ladder from revenue to EBITDA to PAT is exactly the ramp pattern, and at this pace of expansion the disclosure quality matters more than the headline rate.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SCN ══════════════════════════════════════ -->
+<section class="sec" id="scn">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">SCN</span>
+      <h2 class="sec-title">Scenarios to FY30</h2>
+      <span class="sec-meta">Two variables</span>
+    </div>
+
+    <div class="prose">
+      <p>Scenarios turn on two independent variables: the pace at which the FY27 to FY30 bed cohort reaches steady state occupancy, and whether ARPOB growth holds above medical cost inflation. Revenue CAGR is sector aggregate for the listed set. Margin is the maturity normalised blended figure from Section UNT.</p>
+    </div>
+
+    <div class="scn">
+      <div class="scn-c">
+        <div class="scn-h"><div class="scn-t">Absorption</div><div class="scn-p pos">UPSIDE · ~25%</div></div>
+        <div class="scn-b">
+          <div class="m"><span>Revenue CAGR FY26 to 30</span><span class="num">15% to 17%</span></div>
+          <div class="m"><span>Blended margin FY30</span><span class="num">26% to 28%</span></div>
+          <div class="m"><span>New cohort occupancy</span><span class="num">&gt;70% by FY29</span></div>
+          <div class="m"><span>ARPOB growth</span><span class="num">7% to 9%</span></div>
+          <p>Insured pool growth outruns capacity. New beds fill in 24 months rather than 36. Case mix escalation into robotics and transplants sustains pricing above cost inflation. Operating leverage compounds and the maturation tax reverses in full. Requires benign payer negotiation and no CGHS imposition.</p>
+        </div>
+      </div>
+
+      <div class="scn-c">
+        <div class="scn-h"><div class="scn-t">Staggered ramp</div><div class="scn-p" style="color:var(--amber)">BASE · ~55%</div></div>
+        <div class="scn-b">
+          <div class="m"><span>Revenue CAGR FY26 to 30</span><span class="num">12% to 14%</span></div>
+          <div class="m"><span>Blended margin FY30</span><span class="num">23% to 25%</span></div>
+          <div class="m"><span>New cohort occupancy</span><span class="num">60% to 68% by FY29</span></div>
+          <div class="m"><span>ARPOB growth</span><span class="num">4% to 6%</span></div>
+          <p>Beds fill, slowly and unevenly by micro market. Metro clusters with three operators commissioning at once see occupancy dilution while tier 2 ramps faster. Margin recovers to roughly FY25 levels by FY29 rather than exceeding them. Interest cost stays elevated. This is the disclosure consistent path.</p>
+        </div>
+      </div>
+
+      <div class="scn-c">
+        <div class="scn-h"><div class="scn-t">Overbuild</div><div class="scn-p neg">DOWNSIDE · ~20%</div></div>
+        <div class="scn-b">
+          <div class="m"><span>Revenue CAGR FY26 to 30</span><span class="num">9% to 11%</span></div>
+          <div class="m"><span>Blended margin FY30</span><span class="num">18% to 21%</span></div>
+          <div class="m"><span>New cohort occupancy</span><span class="num">&lt;60% by FY29</span></div>
+          <div class="m"><span>ARPOB growth</span><span class="num">0% to 3%</span></div>
+          <p>Metro capacity outruns insured demand. Operators compete on tariff to fill beds and insurers exploit the surplus. Consultant costs stay inflated from the hiring race. Leveraged builders face covenant pressure and consolidation accelerates at distressed multiples. Triggered by CGHS imposition or a sharp stall in insured growth.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Probabilities are analyst judgement, not a fitted distribution. The base case is deliberately unexciting: <strong>the sector earns its way through the build, but slowly, and multiples compress before earnings catch up.</strong> A poor setup for momentum, a reasonable one for accumulation in names where the ramp cost already sits inside the reported base.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KPI ══════════════════════════════════════ -->
+<section class="sec" id="kpi">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">KPI</span>
+      <h2 class="sec-title">What we monitor</h2>
+      <span class="sec-meta">Leading indicators</span>
+    </div>
+
+    <div class="prose">
+      <p>Consolidated margin is a lagging indicator in this sector. The variables below move first and are all disclosed quarterly.</p>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">EXHIBIT 9</span><span class="ex-t">Quarterly watchlist and what a break would signal</span></div>
+      <div class="swipe">Swipe table horizontally →</div>
+      <div class="ex-b">
+        <div class="tscroll">
+        <table>
+          <thead><tr><th>Metric</th><th>Where</th><th>Current</th><th>What a break signals</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">New cohort occupancy</td><td>Medanta Lucknow, Patna, Noida cluster</td><td class="num">44% in Q4 FY26</td><td>Below 50% by Q4 FY27 would confirm the overbuild path in metros.</td></tr>
+            <tr><td class="nm">New unit EBITDA drag</td><td>KIMS quarterly disclosure</td><td class="num">₹32cr in Q4 FY26</td><td>Failure to halve in FY27, as guided, invalidates the normalisation in Exhibit 3.</td></tr>
+            <tr><td class="nm">Clinician cost ratio</td><td>Max, quarterly</td><td class="num">+230bps YoY Q4</td><td>Sustained expansion means the hiring war is permanent, not a timing effect.</td></tr>
+            <tr><td class="nm">ARPOB versus medical inflation</td><td>All operators</td><td class="num">2% to 8% vs 7% to 8%</td><td>Sustained ARPOB below cost inflation means the payer has won the tariff argument.</td></tr>
+            <tr><td class="nm">Retail health premium growth</td><td>IRDAI monthly</td><td class="num">+19% YoY</td><td>Deceleration toward single digits would remove the demand cushion under the build.</td></tr>
+            <tr><td class="nm">Net debt to EBITDA</td><td>Fortis, Narayana, KIMS</td><td class="num">1.09x, 0.49x D/E, QIP</td><td>Above 2x sector wide converts a ramp problem into a solvency problem.</td></tr>
+            <tr><td class="nm">Aster integration</td><td>Quarterly from 5 Aug 26</td><td class="num">first print pending</td><td>Standalone margin expansion stalling below 134bps would suggest integration distraction.</td></tr>
+            <tr><td class="nm">CGHS proceedings</td><td>Supreme Court</td><td class="num">unresolved since 2024</td><td>Any interim direction to apply CGHS rates is the sector's single largest binary.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ex-f">Compiled from company disclosure practice as at FY26. Not all operators disclose all metrics on a standardised basis; empanelment lag in particular is not disclosed by anyone.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RSK ══════════════════════════════════════ -->
+<section class="sec" id="rsk">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">RSK</span>
+      <h2 class="sec-title">Risks to the view</h2>
+      <span class="sec-meta">Including where our own framework breaks</span>
+    </div>
+
+    <ul class="bul">
+      <li><b>Valuation, first and largest.</b> The sector trades on EV to EBITDA in the high twenties to mid thirties against mid teens revenue growth and compressing near term margins, leaving minimal room for ramp disappointment. Use EV to EBITDA and EV per operating bed rather than P/E: depreciation and interest on ramping assets make P/E structurally misleading here.</li>
+      <li><b>Where the normalisation in Exhibit 3 breaks.</b> Adding disclosed drag back assumes it is fully attributable to sub scale units and carries no allocated corporate overhead, which is almost certainly generous. It also assumes new units eventually reach mature unit margins, which is unproven for greenfield assets in contested metros. If new cohorts settle structurally below mature margins, the normalisation overstates recovery and the whole framework in Section UNT is too optimistic.</li>
+      <li><b>CGHS rate imposition.</b> Low probability, severe impact. Escalation risk rises with each Supreme Court hearing at which the Union fails to produce a state level rate framework.</li>
+      <li><b>Clinician cost inflation.</b> With every operator commissioning into the same metros, the bidding war for consultants is structural rather than cyclical, and represents a permanent margin transfer from shareholders to doctors.</li>
+      <li><b>Empanelment and payer contract lag.</b> Cited explicitly by KIMS as a Q4 driver, not standardised in disclosure by anyone, which makes it the hardest variable to model and the easiest to be surprised by.</li>
+      <li><b>Leverage and currency.</b> Net debt is rising sector wide. Narayana carries US$117mn and £150mn of foreign currency borrowing against sterling and dollar revenue, a natural hedge that becomes a mismatch if NHS contracting terms shift.</li>
+      <li><b>Integration risk at Aster.</b> A 39 hospital, four brand combination across low overlap geographies, under joint founder and sponsor control. Pro forma numbers are arithmetic, not performance. A 29.71% financial sponsor stake is also the largest overhang in the listed set.</li>
+      <li><b>International patient volatility.</b> 8% to 9% of revenue at the premium chains, at above average margin, exposed to regional conflict, flight disruption and Gulf macro.</li>
+      <li><b>Comparability itself.</b> Several figures in this note are derived rather than disclosed and are marked <sup class="e">e</sup>. Where operators publish on incompatible bases we have shown both rather than forcing a single series, but any cross operator ranking on margin or ARPOB should be treated as indicative.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ APX ══════════════════════════════════════ -->
+<section class="sec" id="apx">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-mn">APX</span>
+      <h2 class="sec-title">Appendix and sources</h2>
+      <span class="sec-meta">Basis of preparation</span>
+    </div>
+
+    <div class="ex">
+      <div class="ex-h"><span class="ex-n">APPENDIX A</span><span class="ex-t">Q1 FY27 reporting status as at 3 August 2026</span></div>
+      <div class="swipe">Swipe table horizontally →</div>
+      <div class="ex-b">
+        <div class="tscroll">
+        <table>
+          <thead><tr><th>Operator</th><th>Q1 FY27 status</th><th>Basis used in this note</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Narayana Hrudayalaya</td><td class="pos">Reported 30 July 2026</td><td>Q1 FY27</td></tr>
+            <tr><td class="nm">Rainbow Children's</td><td class="pos">Reported 30 July 2026</td><td>Q1 FY27</td></tr>
+            <tr><td class="nm">Aster DM Quality Care</td><td>Call scheduled 5 August 2026, first post merger print</td><td>FY26 pro forma</td></tr>
+            <tr><td class="nm">Apollo Hospitals</td><td>Board meets 12 August 2026</td><td>FY26 audited</td></tr>
+            <tr><td class="nm">Max Healthcare</td><td>Trading window closed 1 July 2026, date to be confirmed</td><td>FY26 audited</td></tr>
+            <tr><td class="nm">Fortis, Medanta, KIMS, Jupiter, Yatharth</td><td>Pending</td><td>FY26 audited</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="ex-f">Reporting dates per exchange filings and company intimations. This note will be superseded once the August cluster completes. Sections UNT and CON are the components most likely to require revision.</div>
+    </div>
+
+    <h3 class="sub">Comparability caveats</h3>
+    <ul class="bul">
+      <li><b>Max reports on a network gross revenue basis</b> that includes three Delhi partner facilities excluded from consolidated statements. Consolidated revenue from operations was ₹8,373cr against ₹10,538cr network gross. Both are correct. They are not the same number.</li>
+      <li><b>Apollo's consolidated margin is structurally lower</b> than peers because pharmacy and distribution dilute a hospital segment running at 24% to 25%. Comparing 14.9% to Max's 26.8% without segmentation is meaningless.</li>
+      <li><b>ARPOB bases differ by operator</b>: daily versus annualised, gross versus net, inclusive or exclusive of diagnostics and OPD pharmacy. See Exhibit 2.</li>
+      <li><b>Narayana's FY26 and Q1 FY27 are not comparable to prior periods</b> following consolidation of Practice Plus Group from 6 November 2025.</li>
+      <li><b>Aster's FY26 figures are pro forma</b> for a merger completed on 19 June 2026. Standalone India FY26 revenue was ₹4,643cr with ₹947cr EBITDA. The QCIL column in Exhibit 8 is a derived residual, not a company disclosure.</li>
+    </ul>
+
+    <h3 class="sub">Modelling approach for company notes</h3>
+    <div class="prose">
+      <p>Target prices require a fitted model and are deliberately absent here. For the company notes that follow, the approach is a bed cohort build: separate mature units from units commissioned within 36 months, model each cohort on its own occupancy ramp and ARPOB path, and let the blend fall out rather than forecasting a consolidated margin directly. KIMS's disclosed 29.5% mature unit margin and Medanta's 32.4% developing hospital margin excluding Noida are the two cleanest terminal anchors in the sector. Valuation on EV to EBITDA and EV per operating bed, cross checked against a DCF with WACC built from the current risk free rate and an equity risk premium appropriate to the regulatory tail.</p>
+    </div>
+
+    <div class="prose">
+      <p style="font-size:var(--fs-note);color:var(--text-3)">Primary sources: company Q4 FY26 and Q1 FY27 results filings, investor presentations and earnings call transcripts via NSE and BSE; the Aster and Quality Care scheme of amalgamation with the NCLT Hyderabad order dated 19 June 2026 and subsequent allotment filings; IRDAI sourced industry premium data via press; Union Budget FY27 health allocations; MoHFW and IBEF sector statistics; broker result updates where cited for derived metrics. All figures are as reported by companies unless marked <sup class="e">e</sup> for derived. No restatement has been applied.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-g">
+      <div>
+        <div class="foot-k">METHOD</div>
+        <div class="foot-t">Bottom up from company disclosure. Where operators publish on incompatible bases both are shown rather than forced into a single series. Derived figures are marked and their basis stated in the exhibit footnote. Scenario probabilities are analyst judgement.</div>
+      </div>
+      <div>
+        <div class="foot-k">WHAT THIS NOTE IS NOT</div>
+        <div class="foot-t">There are no price targets. A stance framework on the capacity cycle is not a valuation call. Targets require a fitted three statement model and WACC build per name, set out in Section APX and delivered separately.</div>
+      </div>
+      <div>
+        <div class="foot-k">DISCLOSURE</div>
+        <div class="foot-t">Independent research. Not investment advice. No compensation received from any company covered. The author may hold positions in securities mentioned.</div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <div>AN·EQUITY RESEARCH · SECTOR INITIATION · INDIAN HOSPITALS AND HEALTHCARE DELIVERY · DATA AS AT 3 AUGUST 2026</div>
+      <div>ADITYA NAIR</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    btn.textContent = t === 'light' ? 'DARK' : 'LIGHT';
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  setTheme(saved || 'dark');
+
+  btn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  document.getElementById('printBtn').addEventListener('click', function () { window.print(); });
+
+  // read progress
+  var prog = document.getElementById('prog');
+  function onScroll() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // bars: visible by default, animated if supported
+  var bars = document.querySelectorAll('.fl');
+  function fill(b) { b.style.width = b.getAttribute('data-w') + '%'; }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduce || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(bars, fill);
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        Array.prototype.forEach.call(e.target.querySelectorAll('.fl'), function (b, i) {
+          setTimeout(function () { fill(b); }, i * 80);
+        });
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.2 });
+    Array.prototype.forEach.call(document.querySelectorAll('.bars'), function (g) { io.observe(g); });
+    // failsafe: fill everything after 4s regardless
+    setTimeout(function () { Array.prototype.forEach.call(bars, fill); }, 4000);
+  }
+  window.addEventListener('beforeprint', function () { Array.prototype.forEach.call(bars, fill); });
+})();
+</script>
+
+</body>
+</html>
